@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MapuTru Lab | Soluciones Inteligentes para Comercios</title>
+  
+  <!-- Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #1E0912;
@@ -23,114 +29,115 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       background: var(--bg);
       color: var(--cream);
       line-height: 1.6;
       overflow-x: hidden;
+      font-weight: 400;
     }
 
-    /* ========== HERO ========== */
-    .hero {
-      height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    /* ========== VISUAL EYE (se mantiene en toda la página) ========== */
+    .eye-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       overflow: hidden;
     }
 
-    /* Capas del Visual Eye (parallax) */
     .eye-layer {
       position: absolute;
       top: 50%;
       left: 50%;
       border-radius: 50%;
-      pointer-events: none;
       transform: translate(-50%, -50%);
       will-change: transform;
     }
 
     .eye-1 {
-      width: 90vmax;
-      height: 90vmax;
-      background: radial-gradient(circle, 
-        rgba(225, 202, 166, 0.07) 0%, 
-        transparent 55%);
+      width: 110vmax;
+      height: 110vmax;
+      background: radial-gradient(circle, rgba(225, 202, 166, 0.06) 0%, transparent 55%);
     }
 
     .eye-2 {
-      width: 65vmax;
-      height: 65vmax;
-      background: radial-gradient(circle, 
-        transparent 30%, 
-        rgba(225, 202, 166, 0.05) 42%, 
-        transparent 58%);
-      border: 1px solid rgba(225, 202, 166, 0.04);
+      width: 75vmax;
+      height: 75vmax;
+      background: radial-gradient(circle, transparent 32%, rgba(225, 202, 166, 0.045) 45%, transparent 60%);
+      border: 1px solid rgba(225, 202, 166, 0.03);
     }
 
     .eye-3 {
-      width: 38vmax;
-      height: 38vmax;
-      background: radial-gradient(circle, 
-        rgba(225, 202, 166, 0.09) 0%, 
-        transparent 60%);
+      width: 42vmax;
+      height: 42vmax;
+      background: radial-gradient(circle, rgba(225, 202, 166, 0.08) 0%, transparent 65%);
     }
 
     .eye-core {
-      width: 12vmax;
-      height: 12vmax;
-      background: radial-gradient(circle, 
-        rgba(225, 202, 166, 0.15) 0%, 
-        transparent 70%);
-      box-shadow: 0 0 80px rgba(225, 202, 166, 0.08);
+      width: 14vmax;
+      height: 14vmax;
+      background: radial-gradient(circle, rgba(225, 202, 166, 0.13) 0%, transparent 70%);
+      box-shadow: 0 0 90px rgba(225, 202, 166, 0.07);
+    }
+
+    /* ========== CONTENIDO ========== */
+    .content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 20;
-      max-width: 800px;
+      max-width: 820px;
       padding: 0 24px;
     }
 
     .brand {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       font-weight: 500;
-      opacity: 0.9;
     }
 
     .hero h1 {
-      font-size: clamp(2.3rem, 5.8vw, 3.6rem);
-      font-weight: 550;
-      line-height: 1.18;
-      margin-bottom: 22px;
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 24px;
       color: var(--cream);
-      letter-spacing: -0.4px;
+      letter-spacing: -0.8px;
     }
 
     .hero p {
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 42px;
+      max-width: 540px;
+      margin: 0 auto 44px;
+      font-weight: 400;
     }
 
     .btn {
       display: inline-block;
       background: transparent;
       color: var(--gold);
-      border: 1px solid rgba(225, 202, 166, 0.6);
-      padding: 15px 42px;
+      border: 1px solid rgba(225, 202, 166, 0.55);
+      padding: 16px 44px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
       font-size: 0.98rem;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       transition: all 0.35s ease;
     }
 
@@ -140,22 +147,19 @@
       border-color: var(--gold);
     }
 
-    /* ========== SECCIONES ========== */
     section {
       padding: 130px 24px;
       max-width: 1100px;
       margin: 0 auto;
-      position: relative;
-      z-index: 10;
     }
 
     .section-title {
       text-align: center;
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       font-weight: 500;
       color: var(--gold);
       margin-bottom: 70px;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .services {
@@ -165,28 +169,35 @@
     }
 
     .card {
-      background: rgba(225, 202, 166, 0.035);
+      background: rgba(225, 202, 166, 0.03);
       border: 1px solid rgba(225, 202, 166, 0.1);
       border-radius: 20px;
       padding: 44px 32px;
       text-align: center;
       transition: all 0.4s ease;
+      backdrop-filter: blur(6px);
     }
 
     .card:hover {
       border-color: rgba(225, 202, 166, 0.28);
       transform: translateY(-7px);
-      background: rgba(225, 202, 166, 0.055);
+      background: rgba(225, 202, 166, 0.05);
     }
 
     .card-icon {
-      font-size: 2.3rem;
-      margin-bottom: 20px;
-      opacity: 0.9;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 22px;
+    }
+
+    .card-icon svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 8px rgba(225, 202, 166, 0.35));
     }
 
     .card h3 {
-      font-size: 1.28rem;
+      font-size: 1.3rem;
       font-weight: 500;
       color: var(--cream);
       margin-bottom: 14px;
@@ -195,16 +206,18 @@
     .card p {
       color: var(--muted);
       font-size: 0.97rem;
+      font-weight: 400;
     }
 
     .benefit {
       display: inline-block;
       margin-top: 22px;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       color: var(--gold);
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
       border-bottom: 1px solid rgba(225, 202, 166, 0.25);
       padding-bottom: 2px;
+      font-weight: 500;
     }
 
     .steps {
@@ -217,7 +230,7 @@
     .step-number {
       width: 48px;
       height: 48px;
-      border: 1px solid rgba(225, 202, 166, 0.5);
+      border: 1px solid rgba(225, 202, 166, 0.45);
       color: var(--gold);
       border-radius: 50%;
       display: flex;
@@ -229,7 +242,7 @@
     }
 
     .step h3 {
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 500;
       color: var(--cream);
       margin-bottom: 10px;
@@ -237,7 +250,7 @@
 
     .step p {
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.95rem;
     }
 
     .cta {
@@ -246,7 +259,7 @@
     }
 
     .cta h2 {
-      font-size: 2.15rem;
+      font-size: 2.2rem;
       font-weight: 500;
       color: var(--cream);
       margin-bottom: 18px;
@@ -255,8 +268,8 @@
     .cta p {
       color: var(--muted);
       margin-bottom: 42px;
-      font-size: 1.08rem;
-      max-width: 460px;
+      font-size: 1.1rem;
+      max-width: 480px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -265,11 +278,10 @@
       text-align: center;
       padding: 40px;
       color: rgba(245, 236, 209, 0.3);
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       border-top: 1px solid rgba(225, 202, 166, 0.07);
     }
 
-    /* Animaciones de entrada */
     .reveal {
       opacity: 0;
       transform: translateY(45px);
@@ -282,7 +294,7 @@
     }
 
     @media (max-width: 600px) {
-      .hero h1 { font-size: 2.15rem; }
+      .hero h1 { font-size: 2.2rem; }
       section { padding: 95px 20px; }
       .cta { padding: 110px 20px 90px; }
     }
@@ -290,85 +302,101 @@
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <!-- Capas del Visual Eye -->
+  <!-- Visual Eye que se mantiene en toda la página -->
+  <div class="eye-background">
     <div class="eye-layer eye-1" id="eye1"></div>
     <div class="eye-layer eye-2" id="eye2"></div>
     <div class="eye-layer eye-3" id="eye3"></div>
     <div class="eye-layer eye-core" id="eyeCore"></div>
+  </div>
 
-    <div class="hero-content">
-      <div class="brand">MapuTru Lab</div>
-      <h1>Soluciones inteligentes<br>para hacer crecer tu negocio</h1>
-      <p>Ayudo a comercios a conseguir más reseñas, fidelizar clientes y aceptar pagos modernos con tecnología simple y efectiva.</p>
-      <a href="#servicios" class="btn">Ver soluciones</a>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <h2 class="section-title reveal">Lo que hacemos hoy</h2>
-    
-    <div class="services">
-      <div class="card reveal">
-        <div class="card-icon">⭐</div>
-        <h3>Más Reseñas en Google</h3>
-        <p>El cliente toca el sticker y deja una reseña real en menos de un minuto. Tú ganas visibilidad.</p>
-        <div class="benefit">Atrae nuevos clientes</div>
+  <div class="content">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="brand">MapuTru Lab</div>
+        <h1>Soluciones inteligentes<br>para hacer crecer tu negocio</h1>
+        <p>Ayudo a comercios a conseguir más reseñas, fidelizar clientes y aceptar pagos modernos con tecnología simple y efectiva.</p>
+        <a href="#servicios" class="btn">Ver soluciones</a>
       </div>
+    </section>
 
-      <div class="card reveal">
-        <div class="card-icon">💎</div>
-        <h3>Clientes que vuelven</h3>
-        <p>Conecta Instagram + comunidad. Convierte visitas ocasionales en clientes recurrentes.</p>
-        <div class="benefit">Fidelización real</div>
-      </div>
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2 class="section-title reveal">Lo que hacemos hoy</h2>
+      
+      <div class="services">
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E1CAA6" stroke-width="1.5">
+              <path d="M12 2L14.5 9H22L16 13.5L18.5 21L12 16.5L5.5 21L8 13.5L2 9H9.5L12 2Z" fill="rgba(225,202,166,0.15)"/>
+            </svg>
+          </div>
+          <h3>Más Reseñas en Google</h3>
+          <p>El cliente toca el sticker y deja una reseña real en menos de un minuto. Tú ganas visibilidad.</p>
+          <div class="benefit">Atrae nuevos clientes</div>
+        </div>
 
-      <div class="card reveal">
-        <div class="card-icon">💳</div>
-        <h3>Pagos Modernos</h3>
-        <p>Bancolombia QR, crypto y pagos contactless. Posiciona tu marca como innovadora.</p>
-        <div class="benefit">Diferénciate</div>
-      </div>
-    </div>
-  </section>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E1CAA6" stroke-width="1.5">
+              <path d="M12 2L13.8 8.2L20 9L15 13.5L16.5 20L12 16.5L7.5 20L9 13.5L4 9L10.2 8.2L12 2Z" fill="rgba(225,202,166,0.15)"/>
+            </svg>
+          </div>
+          <h3>Clientes que vuelven</h3>
+          <p>Conecta Instagram + comunidad. Convierte visitas ocasionales en clientes recurrentes.</p>
+          <div class="benefit">Fidelización real</div>
+        </div>
 
-  <!-- CÓMO FUNCIONA -->
-  <section>
-    <h2 class="section-title reveal">Así de simple funciona</h2>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-number">1</div>
-        <h3>Toca el sticker</h3>
-        <p>El cliente acerca su celular al sticker NFC de tu local.</p>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E1CAA6" stroke-width="1.5">
+              <path d="M12 3L13.5 8.5L19 10L14.5 13.5L16 19.5L12 16L8 19.5L9.5 13.5L5 10L10.5 8.5L12 3Z" fill="rgba(225,202,166,0.15)"/>
+            </svg>
+          </div>
+          <h3>Pagos Modernos</h3>
+          <p>Bancolombia QR, crypto y pagos contactless. Posiciona tu marca como innovadora.</p>
+          <div class="benefit">Diferénciate</div>
+        </div>
       </div>
-      <div class="step reveal">
-        <div class="step-number">2</div>
-        <h3>Realiza la acción</h3>
-        <p>Deja reseña, te sigue o paga de forma moderna.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-number">3</div>
-        <h3>Recibe el beneficio</h3>
-        <p>Obtiene su descuento o premio al instante.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2 class="reveal">¿Quieres llevar esto a tu negocio?</h2>
-    <p class="reveal">Escríbeme por Instagram y te cuento cómo podemos implementarlo en tu local de forma sencilla.</p>
-    <a href="https://ig.me/m/MapuTru_Lab" class="btn reveal" target="_blank">Escribir por Instagram</a>
-  </section>
+    <!-- CÓMO FUNCIONA -->
+    <section>
+      <h2 class="section-title reveal">Así de simple funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">1</div>
+          <h3>Toca el sticker</h3>
+          <p>El cliente acerca su celular al sticker NFC de tu local.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">2</div>
+          <h3>Realiza la acción</h3>
+          <p>Deja reseña, te sigue o paga de forma moderna.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">3</div>
+          <h3>Recibe el beneficio</h3>
+          <p>Obtiene su descuento o premio al instante.</p>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    MapuTru Lab · Soluciones inteligentes para comercios
-  </footer>
+    <!-- CTA -->
+    <section class="cta">
+      <h2 class="reveal">¿Quieres llevar esto a tu negocio?</h2>
+      <p class="reveal">Escríbeme por Instagram y te cuento cómo podemos implementarlo en tu local de forma sencilla.</p>
+      <a href="https://ig.me/m/MapuTru_Lab" class="btn reveal" target="_blank">Escribir por Instagram</a>
+    </section>
+
+    <footer>
+      MapuTru Lab · Soluciones inteligentes para comercios
+    </footer>
+  </div>
 
   <script>
-    // Parallax suave del Visual Eye al hacer scroll
+    // Parallax suave del Visual Eye
     const eye1 = document.getElementById('eye1');
     const eye2 = document.getElementById('eye2');
     const eye3 = document.getElementById('eye3');
@@ -377,14 +405,13 @@
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
       
-      // Diferentes velocidades = efecto parallax elegante
-      eye1.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.18}px))`;
-      eye2.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.28}px))`;
-      eye3.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.38}px))`;
-      eyeCore.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.48}px))`;
+      eye1.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.12}px))`;
+      eye2.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.22}px))`;
+      eye3.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.32}px))`;
+      eyeCore.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.42}px))`;
     });
 
-    // Reveal al hacer scroll
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
