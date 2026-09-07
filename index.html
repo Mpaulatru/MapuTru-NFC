@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MapuTru Lab | Soluciones Inteligentes para Comercios</title>
   
-  <!-- Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,7 +36,7 @@
       font-weight: 400;
     }
 
-    /* ========== VISUAL EYE (se mantiene en toda la página) ========== */
+    /* Visual Eye */
     .eye-background {
       position: fixed;
       inset: 0;
@@ -81,7 +80,6 @@
       box-shadow: 0 0 90px rgba(225, 202, 166, 0.07);
     }
 
-    /* ========== CONTENIDO ========== */
     .content {
       position: relative;
       z-index: 10;
@@ -93,7 +91,6 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
     }
 
     .hero-content {
@@ -124,7 +121,6 @@
       color: var(--muted);
       max-width: 540px;
       margin: 0 auto 44px;
-      font-weight: 400;
     }
 
     .btn {
@@ -162,6 +158,7 @@
       letter-spacing: 0.5px;
     }
 
+    /* Services */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -206,7 +203,6 @@
     .card p {
       color: var(--muted);
       font-size: 0.97rem;
-      font-weight: 400;
     }
 
     .benefit {
@@ -220,6 +216,47 @@
       font-weight: 500;
     }
 
+    /* ===== NUEVA SECCIÓN MOCKUPS ===== */
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .mockup-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      border: 1px solid rgba(225, 202, 166, 0.12);
+      transition: all 0.4s ease;
+    }
+
+    .mockup-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(225, 202, 166, 0.3);
+    }
+
+    .mockup-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mockup-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 16px;
+      background: linear-gradient(to top, rgba(30, 9, 18, 0.92), transparent);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    /* Steps */
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -302,7 +339,6 @@
 </head>
 <body>
 
-  <!-- Visual Eye que se mantiene en toda la página -->
   <div class="eye-background">
     <div class="eye-layer eye-1" id="eye1"></div>
     <div class="eye-layer eye-2" id="eye2"></div>
@@ -311,6 +347,7 @@
   </div>
 
   <div class="content">
+
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
@@ -361,6 +398,33 @@
       </div>
     </section>
 
+    <!-- NUEVA SECCIÓN: MOCKUPS -->
+    <section>
+      <h2 class="section-title reveal">Así se ve en tu local</h2>
+      
+      <div class="mockups-grid">
+        <div class="mockup-card reveal">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=750&fit=crop" alt="Cafetería">
+          <div class="mockup-label">Cafetería</div>
+        </div>
+
+        <div class="mockup-card reveal">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=750&fit=crop" alt="Tienda de ropa">
+          <div class="mockup-label">Tienda de ropa</div>
+        </div>
+
+        <div class="mockup-card reveal">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=750&fit=crop" alt="Restaurante">
+          <div class="mockup-label">Restaurante</div>
+        </div>
+
+        <div class="mockup-card reveal">
+          <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=600&h=750&fit=crop" alt="Bar">
+          <div class="mockup-label">Bar</div>
+        </div>
+      </div>
+    </section>
+
     <!-- CÓMO FUNCIONA -->
     <section>
       <h2 class="section-title reveal">Así de simple funciona</h2>
@@ -396,7 +460,6 @@
   </div>
 
   <script>
-    // Parallax suave del Visual Eye
     const eye1 = document.getElementById('eye1');
     const eye2 = document.getElementById('eye2');
     const eye3 = document.getElementById('eye3');
@@ -404,14 +467,12 @@
 
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
-      
       eye1.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.12}px))`;
       eye2.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.22}px))`;
       eye3.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.32}px))`;
       eyeCore.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.42}px))`;
     });
 
-    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
