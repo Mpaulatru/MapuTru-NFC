@@ -5,199 +5,258 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MapuTru Lab | Soluciones Inteligentes para Comercios</title>
   <style>
+    :root {
+      --bg: #1E0912;
+      --gold: #E1CAA6;
+      --cream: #F5ECD1;
+      --muted: rgba(245, 236, 209, 0.62);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #0a0a0a;
-      color: #f5f5f5;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--cream);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
+    /* ========== HERO ========== */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.88)),
-                  url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600') center/cover fixed;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
+      overflow: hidden;
+    }
+
+    /* Capas del Visual Eye (parallax) */
+    .eye-layer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+    }
+
+    .eye-1 {
+      width: 90vmax;
+      height: 90vmax;
+      background: radial-gradient(circle, 
+        rgba(225, 202, 166, 0.07) 0%, 
+        transparent 55%);
+    }
+
+    .eye-2 {
+      width: 65vmax;
+      height: 65vmax;
+      background: radial-gradient(circle, 
+        transparent 30%, 
+        rgba(225, 202, 166, 0.05) 42%, 
+        transparent 58%);
+      border: 1px solid rgba(225, 202, 166, 0.04);
+    }
+
+    .eye-3 {
+      width: 38vmax;
+      height: 38vmax;
+      background: radial-gradient(circle, 
+        rgba(225, 202, 166, 0.09) 0%, 
+        transparent 60%);
+    }
+
+    .eye-core {
+      width: 12vmax;
+      height: 12vmax;
+      background: radial-gradient(circle, 
+        rgba(225, 202, 166, 0.15) 0%, 
+        transparent 70%);
+      box-shadow: 0 0 80px rgba(225, 202, 166, 0.08);
     }
 
     .hero-content {
-      max-width: 820px;
-      padding: 20px;
-      animation: fadeUp 1.2s ease;
+      position: relative;
+      z-index: 20;
+      max-width: 800px;
+      padding: 0 24px;
     }
 
     .brand {
-      font-size: 0.95rem;
-      letter-spacing: 4px;
+      font-size: 0.82rem;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #D4AF37;
-      margin-bottom: 18px;
+      color: var(--gold);
+      margin-bottom: 22px;
       font-weight: 500;
+      opacity: 0.9;
     }
 
     .hero h1 {
-      font-size: clamp(2.3rem, 6vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -1px;
+      font-size: clamp(2.3rem, 5.8vw, 3.6rem);
+      font-weight: 550;
+      line-height: 1.18;
       margin-bottom: 22px;
-      background: linear-gradient(90deg, #D4AF37, #F5E6C8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--cream);
+      letter-spacing: -0.4px;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: #d0d0d0;
-      margin-bottom: 38px;
-      max-width: 580px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 42px;
     }
 
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, #D4AF37, #B8860B);
-      color: #111;
-      padding: 16px 42px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(225, 202, 166, 0.6);
+      padding: 15px 42px;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+      font-weight: 500;
+      font-size: 0.98rem;
+      letter-spacing: 0.6px;
+      transition: all 0.35s ease;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.45);
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
     }
 
+    /* ========== SECCIONES ========== */
     section {
-      padding: 100px 20px;
+      padding: 130px 24px;
       max-width: 1100px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.1rem;
-      margin-bottom: 60px;
-      color: #D4AF37;
-      font-weight: 600;
+      font-size: 1.85rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 70px;
+      letter-spacing: 1px;
     }
 
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 28px;
     }
 
     .card {
-      background: linear-gradient(145deg, #141414, #1a1a1a);
-      border: 1px solid #2a2a2a;
+      background: rgba(225, 202, 166, 0.035);
+      border: 1px solid rgba(225, 202, 166, 0.1);
       border-radius: 20px;
-      padding: 40px 30px;
+      padding: 44px 32px;
       text-align: center;
       transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #D4AF37, transparent);
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      border-color: #D4AF37;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-color: rgba(225, 202, 166, 0.28);
+      transform: translateY(-7px);
+      background: rgba(225, 202, 166, 0.055);
     }
 
     .card-icon {
-      font-size: 2.7rem;
+      font-size: 2.3rem;
       margin-bottom: 20px;
+      opacity: 0.9;
     }
 
     .card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 15px;
-      color: #F5E6C8;
+      font-size: 1.28rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 14px;
     }
 
     .card p {
-      color: #aaa;
-      font-size: 1rem;
+      color: var(--muted);
+      font-size: 0.97rem;
     }
 
     .benefit {
       display: inline-block;
-      margin-top: 18px;
-      background: rgba(212, 175, 55, 0.15);
-      color: #D4AF37;
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      margin-top: 22px;
+      font-size: 0.84rem;
+      color: var(--gold);
+      letter-spacing: 0.4px;
+      border-bottom: 1px solid rgba(225, 202, 166, 0.25);
+      padding-bottom: 2px;
     }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+      gap: 40px;
       text-align: center;
     }
 
-    .step {
-      padding: 30px 20px;
-    }
-
     .step-number {
-      width: 50px;
-      height: 50px;
-      background: #D4AF37;
-      color: #111;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(225, 202, 166, 0.5);
+      color: var(--gold);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
+      font-weight: 500;
+      font-size: 1.1rem;
       margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.94rem;
     }
 
     .cta {
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(to bottom, #0a0a0a, #111);
+      padding: 150px 24px 130px;
     }
 
     .cta h2 {
-      font-size: 2.3rem;
+      font-size: 2.15rem;
+      font-weight: 500;
+      color: var(--cream);
       margin-bottom: 18px;
-      color: #F5E6C8;
     }
 
     .cta p {
-      color: #bbb;
-      margin-bottom: 40px;
-      font-size: 1.15rem;
-      max-width: 520px;
+      color: var(--muted);
+      margin-bottom: 42px;
+      font-size: 1.08rem;
+      max-width: 460px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -205,19 +264,27 @@
     footer {
       text-align: center;
       padding: 40px;
-      color: #555;
-      font-size: 0.9rem;
-      border-top: 1px solid #1a1a1a;
+      color: rgba(245, 236, 209, 0.3);
+      font-size: 0.84rem;
+      border-top: 1px solid rgba(225, 202, 166, 0.07);
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Animaciones de entrada */
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 600px) {
-      .hero h1 { font-size: 2.1rem; }
-      section { padding: 70px 20px; }
+      .hero h1 { font-size: 2.15rem; }
+      section { padding: 95px 20px; }
+      .cta { padding: 110px 20px 90px; }
     }
   </style>
 </head>
@@ -225,9 +292,15 @@
 
   <!-- HERO -->
   <section class="hero">
+    <!-- Capas del Visual Eye -->
+    <div class="eye-layer eye-1" id="eye1"></div>
+    <div class="eye-layer eye-2" id="eye2"></div>
+    <div class="eye-layer eye-3" id="eye3"></div>
+    <div class="eye-layer eye-core" id="eyeCore"></div>
+
     <div class="hero-content">
       <div class="brand">MapuTru Lab</div>
-      <h1>Soluciones inteligentes para hacer crecer tu negocio</h1>
+      <h1>Soluciones inteligentes<br>para hacer crecer tu negocio</h1>
       <p>Ayudo a comercios a conseguir más reseñas, fidelizar clientes y aceptar pagos modernos con tecnología simple y efectiva.</p>
       <a href="#servicios" class="btn">Ver soluciones</a>
     </div>
@@ -235,24 +308,24 @@
 
   <!-- SERVICIOS -->
   <section id="servicios">
-    <h2 class="section-title">Lo que hacemos hoy</h2>
+    <h2 class="section-title reveal">Lo que hacemos hoy</h2>
     
     <div class="services">
-      <div class="card">
+      <div class="card reveal">
         <div class="card-icon">⭐</div>
         <h3>Más Reseñas en Google</h3>
         <p>El cliente toca el sticker y deja una reseña real en menos de un minuto. Tú ganas visibilidad.</p>
         <div class="benefit">Atrae nuevos clientes</div>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <div class="card-icon">💎</div>
         <h3>Clientes que vuelven</h3>
         <p>Conecta Instagram + comunidad. Convierte visitas ocasionales en clientes recurrentes.</p>
         <div class="benefit">Fidelización real</div>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <div class="card-icon">💳</div>
         <h3>Pagos Modernos</h3>
         <p>Bancolombia QR, crypto y pagos contactless. Posiciona tu marca como innovadora.</p>
@@ -263,19 +336,19 @@
 
   <!-- CÓMO FUNCIONA -->
   <section>
-    <h2 class="section-title">Así de simple funciona</h2>
+    <h2 class="section-title reveal">Así de simple funciona</h2>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">1</div>
         <h3>Toca el sticker</h3>
         <p>El cliente acerca su celular al sticker NFC de tu local.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">2</div>
         <h3>Realiza la acción</h3>
         <p>Deja reseña, te sigue o paga de forma moderna.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">3</div>
         <h3>Recibe el beneficio</h3>
         <p>Obtiene su descuento o premio al instante.</p>
@@ -285,14 +358,43 @@
 
   <!-- CTA -->
   <section class="cta">
-    <h2>¿Quieres llevar esto a tu negocio?</h2>
-    <p>Escríbeme por Instagram y te cuento cómo podemos implementarlo en tu local de forma sencilla.</p>
-    <a href="https://ig.me/m/MapuTru_Lab" class="btn" target="_blank">Escribir por Instagram</a>
+    <h2 class="reveal">¿Quieres llevar esto a tu negocio?</h2>
+    <p class="reveal">Escríbeme por Instagram y te cuento cómo podemos implementarlo en tu local de forma sencilla.</p>
+    <a href="https://ig.me/m/MapuTru_Lab" class="btn reveal" target="_blank">Escribir por Instagram</a>
   </section>
 
   <footer>
     MapuTru Lab · Soluciones inteligentes para comercios
   </footer>
 
+  <script>
+    // Parallax suave del Visual Eye al hacer scroll
+    const eye1 = document.getElementById('eye1');
+    const eye2 = document.getElementById('eye2');
+    const eye3 = document.getElementById('eye3');
+    const eyeCore = document.getElementById('eyeCore');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      
+      // Diferentes velocidades = efecto parallax elegante
+      eye1.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.18}px))`;
+      eye2.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.28}px))`;
+      eye3.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.38}px))`;
+      eyeCore.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.48}px))`;
+    });
+
+    // Reveal al hacer scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
